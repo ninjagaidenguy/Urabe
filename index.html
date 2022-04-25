@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Game</title>
+    <script src="/js/script.js"></script>
+    <link id="main-style" rel="stylesheet" href="/style/main.css">
+</head>
+
+<body>
+    <div id="game">
+        <div id="background" class="unselectable">
+            <div id="splash" class="unselectable"></div>
+            <div id="particles" class="unselectable"></div>
+            <div id="main-background" class="unselectable"></div>
+        </div>
+        <div id="choices"></div>
+        <div id="text" class="hide">
+            <span id="talking"></span>
+            <span id="saying"></span>
+        </div>
+        <div id="text-menu">
+            <span id="tm-back">Back</span>
+            <span id="tm-hide">Hide</span>
+            <span id="tm-auto">Auto</span>
+            <span id="save">Save</span>
+            <span id="load">Load</span>
+            <span id="tm-settings">Settings</span>
+            <span id="tm-quit">Quit</span>
+        </div>
+        <div id="characters">
+            <div class="character"><img id="character-left"></div>
+            <div class="character"><img id="character-center"></div>
+            <div class="character"><img id="character-right"></div>
+
+        </div>
+        <div id="main-menu">
+            <button id="new" class="menu-items">New Game</button>
+            <button id="save" class="menu-items">Save</button>
+            <button id="load" class="menu-items">Load</button>
+            <button id="settings" class="menu-items">Settings</button>
+            <button id="close" class="menu-items hide">Close</button>
+        </div>
+    </div>
+    <audio src="" id='ambiance' class="hide" loop></audio>
+    <audio src="" id="music" class="hide" loop></audio>
+    <audio src="" id="voice" class="hide"></audio>
+    <script src="/js/general.js"></script>
+    <script src="/js/player.js"></script>
+</body>
+
+</html>
