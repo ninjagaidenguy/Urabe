@@ -1,37 +1,3 @@
-/* const startGame = (file) => {
-    hideMainMenu()
-    setBackground(`assets/backgrounds/${file['0'].background}`)
-    showArea('#text')
-    ambiancePlay(file['0'].ambiance, globalSettings._globalVolume)
-    setTalking(file['1'].name)
-    newSetCharacter(getMood(file['1'].name, file['1'].mood[0]), file['1'].mood[1])
-    say(file['1'].say)
-    const text = document.querySelector('#text')
-    return text.addEventListener('click', () => {
-        playNext(file, '2')
-    })
-}
-const playNext = (file, jump) => {
-    let _current = file[jump].type
-    if (_current === 'newScene') {
-    } else if (_current === 'text') {
-        setTalking(file[jump].name)
-        document.querySelector('#saying').innerHTML = ''
-        say(file[jump].say)
-        newSetCharacter(getMood(file[jump].name, file[jump].mood[0]), file['1'].mood[1])
-        say(file[jump].say)
-        console.log(file[jump].jump)
-        const text = document.querySelector('#text').addEventListener('click', () => {
-            playNext(file, file[jump].jump)
-        }
-        )
-    } else if (_current === 'choices') {
-        return
-    } else {
-        return
-    }
-}
- */
 const getCurrentIndex = () => {
     return document.querySelector('#text').getAttribute('data-index')
 }
@@ -43,21 +9,43 @@ const updateCurrentIndex = (script) => {
     console.log(script[getCurrentIndex()].jump)
     document.querySelector('#text').setAttribute('data-index', script[getCurrentIndex()].jump)
 }
-const Talk = (file, i) => {
+const Talk = (script) => {
     // Set Players name in the #Talking Span
-    setTalking(file[i].name)
+    setTalking(script[getCurrentIndex()].name)
     // Check if we need to change the image or not by checking if there is a mood/image or not
-    if (file[i].mood === 'object') {
-        newSetCharacter(getMood(file[i].name, file[i].mood[0]), file['1'].mood[1])
+    if (script[getCurrentIndex()].mood === 'object') {
+        newSetCharacter(getMood(script[getCurrentIndex()].name, script[getCurrentIndex()].mood[0]), script['1'].mood[1])
     }
     // Insert the text and have it show at a specific speed
-    say(file[i].say)
+    say(script[getCurrentIndex()].say)
 }
-
-
-
-
-
+const say = (text, speed = '50', area = '#saying') => {
+    document.querySelector(area).innerHTML = ''
+    const mainText = document.querySelector(area)
+    let i = 0
+    const timer = setInterval(() => {
+        if (i < text.length) {
+            mainText.append(text.charAt(i))
+            i++
+        } else {
+            clearInterval(timer)
+        }
+    }, speed)
+}
+//Text render
+const textShower = (text, speed, area = '#saying') => {
+    const mainText = document.querySelector(`${area}`)
+    mainText.textContent = ''
+    let i = 0
+    const timer = setInterval(() => {
+        if (i < text.length) {
+            mainText.append(text.charAt(i))
+            i++
+        } else {
+            clearInterval(timer)
+        }
+    }, speed)
+}
 const goNext = (script) => {
     if (getSceneType(script) === 'newScene') {
         hideMainMenu()
@@ -77,6 +65,33 @@ const goNext = (script) => {
         console.log('Something went wrong')
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*      switch (getSceneType(script)) {
             case 'newScene':
                 hideMainMenu()
@@ -98,23 +113,6 @@ const goNext = (script) => {
         } 
     updateCurrentIndex(script)
 } */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const play1 = (file, current) => {
     /**
      * @param {variable} file - Pick the script to start running
@@ -145,11 +143,8 @@ const play1 = (file, current) => {
         alert('Something went wrong with the "play" Check the script' + _file + " and the label " + current)
     }
 }
-
 /**@description what script or file we are on */
 let currentScene
 /**@description What label on the script we are on */
 let currentLabel
-
 //setBackground('assets/backgrounds/classroom01.jpg')
-

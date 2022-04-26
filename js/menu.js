@@ -28,3 +28,11 @@ document.querySelector('#new').addEventListener('click', () => {
     hideMainMenu()
     goNext(tempScript)
 })
+// Show Main Menu
+const showMainMenu = () => {
+    document.querySelector("#main-menu").classList.remove('hide')
+}
+//Hide Main Menu
+const hideMainMenu = () => {
+    document.querySelector("#main-menu").classList.add('hide')
+}

@@ -26,14 +26,14 @@ const tempScript = {
         type: 'text',
         delay: '1',
         name: 'Tsubaki',
-        mood: 'confusion',
+        mood: ['confusion', 'right'],
         say: `I'm going to borrow your dictionary for a second.`,
         jump: '4'
     },
     4: {
         type: 'choices',
         1: 'Rumage through his Bookbag',
-        2: 'A',
+        2: '2',
         3: 'Response 3'
     }
 }

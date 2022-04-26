@@ -127,13 +127,6 @@ const removeBackgroundOverlay = (selector, color) => {
     let main = document.querySelector(selector)
     main.classList.remove(color)
 }
-//Menus
-const showMainMenu = () => {
-    document.querySelector("#main-menu").classList.remove('hide')
-}
-const hideMainMenu = () => {
-    document.querySelector("#main-menu").classList.add('hide')
-}
 //Checkers
 const hideArea = (id) => {
     if (typeof (id) === 'string') {
@@ -163,76 +156,6 @@ const checkUndefined = (area) => {
 const checkUndefinedAlt = (area, src) => {
     return typeof area.src === 'undefined'
 }
-//Characters
-const setCharacter = (url, height = '50vh', align = 'center', animation = 'fade') => {
-    let main = document.querySelector("#character")
-    main.removeAttribute('class')
-    main.removeAttribute('src')
-    main.src = url
-    main.style.height = height
-    main.classList.add(align)
-    main.classList.add(animation)
-}
-const newSetCharacter = (url, position = 'center', height = '50vh', animation = 'fade') => {
-    let main = document.querySelector(`#character-${position}`)
-    main.removeAttribute('class') //remove any classes
-    main.removeAttribute('src') //remove existing image
-    main.src = url //set the characters heigh
-    main.style.height = height //set character height
-    main.classList.add(animation) //current only animation is fade
-}
-const setCharacters = (url, position = 'center', height = '50vh', animation = 'fade') => {
-    let main = document.querySelector(`#character-${position}`)
-    main.removeAttribute('class') //remove any classes
-    main.removeAttribute('src') //remove existing image
-    main.src = url //set the characters heigh
-    main.style.height = height //set character height
-    main.classList.add(animation) //current only animation is fade
-}
-
-const setTalking = (talking) => {
-    document.querySelector('#talking').textContent = talking
-}
-//Audio
-const ambiancePlay = (script) => {
-    const audio = document.querySelector("#ambiance")
-    audio.src = `assets/ambiance/${script[getCurrentIndex()].ambiance}`
-    audio.volume = globalSettings._soundEffectVolume
-    audio.play()
-}
-
-
-const ambiancepause = () => {
-    audio = document.querySelector("#ambiance")
-    audio.pause()
-}
-//Text render
-const textShower = (text, speed, area = '#saying') => {
-    const mainText = document.querySelector(`${area}`)
-    mainText.textContent = ''
-    let i = 0
-    const timer = setInterval(() => {
-        if (i < text.length) {
-            mainText.append(text.charAt(i))
-            i++
-        } else {
-            clearInterval(timer)
-        }
-    }, speed)
-}
-const say = (text, speed = '50', area = '#saying') => {
-    document.querySelector(area).innerHTML = ''
-    const mainText = document.querySelector(area)
-    let i = 0
-    const timer = setInterval(() => {
-        if (i < text.length) {
-            mainText.append(text.charAt(i))
-            i++
-        } else {
-            clearInterval(timer)
-        }
-    }, speed)
-}
 //Character Creator
 const CharacterCreator = function (name, text = {
     color: 'white',
@@ -249,10 +172,4 @@ const CharacterCreator = function (name, text = {
     const text1 = function (text) {
 
     }
-}
-//moods
-const getMood = (name, moodType) => {
-    const path = `/assets/characters/`
-    const lowerCase = this._name
-    return `${path}${name}/${moodType}.png`
 }
