@@ -11,14 +11,14 @@ const tempScript = {
         type: 'text',
         name: 'Tsubaki',
         say: `Ueno-!`,
-        mood: ['normal','right'],
+        mood: ['normal', 'right'],
         jump: '2'
     },
     2: {
         type: 'text',
         delay: '1',
         name: 'Ueno',
-        mood: ['confusion','left'],
+        mood: ['confusion', 'left'],
         say: `Hun?`,
         jump: '3'
     },

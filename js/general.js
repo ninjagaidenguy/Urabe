@@ -1,15 +1,11 @@
 'use strict'
-
-/**
- * @constructor
- */
 class Mgfx {
     constructor(name) {
         this._name = name
     }
 }
-class Settings extends Mgfx{
-    constructor(name = 'game1', globalVolume = '100', voiceVolume = '100', musicVolume = '100', soundEffectVolume = '100', textSpeed = '100', language = 'En' ){
+class Settings extends Mgfx {
+    constructor(name = 'game1', globalVolume = '.5', voiceVolume = '.5', musicVolume = '.5', soundEffectVolume = '.5', textSpeed = '100', language = 'En') {
         super(name)
         this._globalVolume = globalVolume
         this._voiceVolume = voiceVolume
@@ -109,25 +105,25 @@ const Ueno = new Character('Ueno', 'Kouhei', {
 })
 //Text Types
 const normalText = new Text('normalText')
-const boldText = new Text('boldText','16','white','bold')
+const boldText = new Text('boldText', '16', 'white', 'bold')
 const yelling = new Text('yelling', '48', 'yellow', 'bold', 'shaking')
+
 //Backgrounds
 // TO DO make animation do something
-const setBackground = (url,animation) => {
+const setBackground = (script) => {
+    document.getElementById('background').style['background-color'] = 'black'
     let main = document.querySelector("#main-background")
-    if( checkUndefined(url)){
-        main.style.background = `url('${url}')  center center / cover no-repeat`
-    } else {
-        main.style.background = `url('${url}')  center center / cover no-repeat`
-    }
+    const url = `assets/backgrounds/${script[getCurrentIndex()].background}`
+    main.style.background = `url('${url}')  center center / cover no-repeat`
 }
+
 //Fade the background using CSS for stuff like opening menus
 // setBackGroundOverlay('#background','gray-overlay')
-const setBackgroundOverlay = (selector,color) => {
+const setBackgroundOverlay = (selector, color) => {
     let main = document.querySelector(selector)
     main.classList.add(color)
 }
-const removeBackgroundOverlay = (selector,color) => {
+const removeBackgroundOverlay = (selector, color) => {
     let main = document.querySelector(selector)
     main.classList.remove(color)
 }
@@ -140,31 +136,31 @@ const hideMainMenu = () => {
 }
 //Checkers
 const hideArea = (id) => {
-    if( typeof(id) === 'string'){
-       let main = document.querySelector(id)
-       main.classList.add('hide') 
-    } else if ( typeof(id === 'object' )){
+    if (typeof (id) === 'string') {
+        let main = document.querySelector(id)
+        main.classList.add('hide')
+    } else if (typeof (id === 'object')) {
         for (let i = 0; i < id.length; i++) {
             const main = document.querySelector(id[i])
-            main.classList.add('hide') 
+            main.classList.add('hide')
         }
     }
 }
 const showArea = (id) => {
-    if( typeof(id) === 'string'){
-       let main = document.querySelector(id)
-       main.classList.remove('hide') 
-    } else if ( typeof(id === 'object' )){
+    if (typeof (id) === 'string') {
+        let main = document.querySelector(id)
+        main.classList.remove('hide')
+    } else if (typeof (id === 'object')) {
         for (let i = 0; i < id.length; i++) {
             const main = document.querySelector(id[i])
-            main.classList.remove('hide') 
+            main.classList.remove('hide')
         }
     }
 }
 const checkUndefined = (area) => {
     return typeof area.background === 'undefined'
 }
-const checkUndefinedAlt = (area,src) => {
+const checkUndefinedAlt = (area, src) => {
     return typeof area.src === 'undefined'
 }
 //Characters
@@ -198,18 +194,20 @@ const setTalking = (talking) => {
     document.querySelector('#talking').textContent = talking
 }
 //Audio
-const ambiancePlay = (file, volume) => {
+const ambiancePlay = (script) => {
     const audio = document.querySelector("#ambiance")
-    audio.src = `assets/ambiance/${file}`
-    audio.volume = volume
+    audio.src = `assets/ambiance/${script[getCurrentIndex()].ambiance}`
+    audio.volume = globalSettings._soundEffectVolume
     audio.play()
 }
+
+
 const ambiancepause = () => {
     audio = document.querySelector("#ambiance")
     audio.pause()
 }
 //Text render
-const textShower = (text, speed, area = '#saying' ) => {
+const textShower = (text, speed, area = '#saying') => {
     const mainText = document.querySelector(`${area}`)
     mainText.textContent = ''
     let i = 0
@@ -222,10 +220,9 @@ const textShower = (text, speed, area = '#saying' ) => {
         }
     }, speed)
 }
-const say = (text, speed, area = '#saying' ) => {
-
-    const mainText = document.querySelector(`${area}`)
-    mainText.textContent = ''
+const say = (text, speed = '50', area = '#saying') => {
+    document.querySelector(area).innerHTML = ''
+    const mainText = document.querySelector(area)
     let i = 0
     const timer = setInterval(() => {
         if (i < text.length) {
@@ -237,56 +234,22 @@ const say = (text, speed, area = '#saying' ) => {
     }, speed)
 }
 //Character Creator
-const CharacterCreator = function( name, text = {
+const CharacterCreator = function (name, text = {
     color: 'white',
     size: '16',
     weight: 'regular',
     animation: 'typewriter'
- }, images = {
-     default: `${path}/default.png`
- } ) {
-     path = () => {
+}, images = {
+    default: `${path}/default.png`
+}) {
+    path = () => {
         return `/assets/characters/${name}/`
     }
     const name1 = name
-    const text1 = function(text){
+    const text1 = function (text) {
 
     }
 }
-//Menus
-//New Game
-document.querySelector("#new").addEventListener( 'click', () => {
-    hideMainMenu()
-    // just so we have some initial content need to remove eventually
-    showArea('#text')
-    setBackground('assets/backgrounds/classroom01.jpg')
-    //setCharacter(Tsubaki.getMood('normal'), '60vh')
-    setTalking(Tsubaki.firstName())
-    textShower(tempScript[1].say, 50)
-    ambiancePlay('classroomChatter.mp3','.2')
-    newSetCharacter(Tsubaki.getMood('normal'),'right')
-})
-//Save
-document.querySelector("#save").addEventListener( 'click', () => {
-})
-//Load
-document.querySelector("#load").addEventListener( 'click', () => {
-})
-//Settings
-document.querySelector("#settings").addEventListener( 'click', () => {
-})
-//Close
-document.querySelector("#close").addEventListener( 'click', () => {
-    hideMainMenu()
-    showArea(['#character','#choices','#text'])
-    removeBackgroundOverlay('#main-background','gray-overlay')
-})
-//Settings
-document.querySelector("#tm-settings").addEventListener( 'click', () => {
-    showTextMenu()
-    setBackgroundOverlay('#main-background','gray-overlay')
-    hideArea(['#character','#choices','#text'])
-})
 //moods
 const getMood = (name, moodType) => {
     const path = `/assets/characters/`
