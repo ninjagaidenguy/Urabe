@@ -11,7 +11,10 @@ const tempScript = {
         type: 'text',
         name: 'Tsubaki',
         say: `Ueno-!`,
+        style: 'normal',
         mood: ['normal', 'right'],
+        animation: 'fade',
+        height: '50vh',
         jump: '2'
     },
     2: {
@@ -20,6 +23,8 @@ const tempScript = {
         name: 'Ueno',
         mood: ['confusion', 'left'],
         say: `Hun?`,
+        animation: 'fade',
+        height: '50vh',
         jump: '3'
     },
     3: {

@@ -6,10 +6,9 @@ const getSceneType = (script) => {
     return script[getCurrentIndex()].type
 }
 const updateCurrentIndex = (script) => {
-    console.log(script[getCurrentIndex()].jump)
     document.querySelector('#text').setAttribute('data-index', script[getCurrentIndex()].jump)
 }
-const Talk = (script) => {
+/* const Talk = (script) => {
     // Set Players name in the #Talking Span
     setTalking(script[getCurrentIndex()].name)
     // Check if we need to change the image or not by checking if there is a mood/image or not
@@ -18,7 +17,7 @@ const Talk = (script) => {
     }
     // Insert the text and have it show at a specific speed
     say(script[getCurrentIndex()].say)
-}
+} */
 const say = (text, speed = '50', area = '#saying') => {
     document.querySelector(area).innerHTML = ''
     const mainText = document.querySelector(area)
@@ -55,7 +54,7 @@ const goNext = (script) => {
         updateCurrentIndex(script)
     } else if (getSceneType(script) === 'text') {
         setTalking(script[getCurrentIndex()].name)
-        newSetCharacter(getMood(script[getCurrentIndex()].name, script[getCurrentIndex()].mood[0]), script['1'].mood[1])
+        updateCharacter(script)
         say(script[getCurrentIndex()].say)
         updateCurrentIndex(script)
     } else if (getSceneType(script) === 'choices') {
