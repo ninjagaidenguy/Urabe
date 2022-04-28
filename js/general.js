@@ -86,23 +86,8 @@ class Character extends Mgfx {
     }
 }
 //Settings
-let globalSettings = new Settings('Raw Bacon?')
-globalSettings._globalVolume = '.5'
-//Characters
-const Tsubaki = new Character('Tsubaki', 'Akira', {
-    normal: 'normal',
-    angry: 'angry',
-    suprised: 'suprised',
-    yelling: 'yelling',
-    confusion: 'confusion'
-})
-const Ueno = new Character('Ueno', 'Kouhei', {
-    normal: 'normal',
-    angry: 'angry',
-    suprised: 'suprised',
-    yelling: 'yelling',
-    confusion: 'confusion'
-})
+let globalSettings = new Settings()
+
 //Text Types
 const normalText = new Text('normalText')
 const boldText = new Text('boldText', '16', 'white', 'bold')
@@ -156,20 +141,5 @@ const checkUndefined = (area) => {
 const checkUndefinedAlt = (area, src) => {
     return typeof area.src === 'undefined'
 }
-//Character Creator
-const CharacterCreator = function (name, text = {
-    color: 'white',
-    size: '16',
-    weight: 'regular',
-    animation: 'typewriter'
-}, images = {
-    default: `${path}/default.png`
-}) {
-    path = () => {
-        return `/assets/characters/${name}/`
-    }
-    const name1 = name
-    const text1 = function (text) {
 
-    }
-}
+

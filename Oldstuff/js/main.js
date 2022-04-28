@@ -9,8 +9,8 @@ class Mgfx {
     }
 }
 
-class Settings extends Mgfx{
-    constructor(name = 'game1', globalVolume = '100', voiceVolume = '100', musicVolume = '100', soundEffectVolume = '100', textSpeed = '100', language = 'En' ){
+class Settings extends Mgfx {
+    constructor(name = 'game1', globalVolume = '100', voiceVolume = '100', musicVolume = '100', soundEffectVolume = '100', textSpeed = '100', language = 'En') {
         super(name)
         this._globalVolume = globalVolume
         this._voiceVolume = voiceVolume
@@ -96,6 +96,8 @@ class Character extends Mgfx {
 
 //Settings
 let globalSetting = new Settings()
+globalSetting._name = 'Raw Bacon?'
+globalSetting._soundEffectVolume = '50'
 
 //Characters
 const Tsubaki = new Character('Tsubaki', 'Akira', {
@@ -115,9 +117,9 @@ const Ueno = new Character('Ueno', 'Kouhei', {
 
 //Text Types
 const normalText = new Text('normalText')
-const boldText = new Text('boldText','16','white','bold')
+const boldText = new Text('boldText', '16', 'white', 'bold')
 const yelling = new Text('yelling', '48', 'yellow', 'bold', 'shaking')
 
-export {globalSetting,Tsubaki,Ueno}
+export { globalSetting, Tsubaki, Ueno }
 
 console.log(Tsubaki._moods.normal)

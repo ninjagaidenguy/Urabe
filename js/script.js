@@ -37,9 +37,14 @@ const tempScript = {
     },
     4: {
         type: 'choices',
-        1: 'Rumage through his Bookbag',
-        2: '2',
-        3: 'Response 3'
+        choices: {
+            1: {
+                choice: 'Rumage through his Bookbag',
+                jump: 5
+            },
+            2: '2',
+            3: 'Response 3'
+        }
     }
 }
 

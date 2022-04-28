@@ -29,9 +29,16 @@ const setCharacters = (url, position = 'center', height = '50vh', animation = 'f
 }
 // Character Image Helpers and setters
 
-// Character Helper function 
+// Character Helper function
 // Ex. character.name(tempScript)
 // Ex Output 'Ueno'
+
+/** 
+ * @name character
+ * @
+ * @abstract
+ * 
+ */
 const character = (() => {
     /*
     * Usage
@@ -89,35 +96,48 @@ const updateCharacter = (script) => {
         area.style.height = getCharacterHeight(script)
         area.src = getCharacterUrl(script) */
 }
+// Helper Script 
+const setCharacter = (script) => {
+    (() => {
+        return {
+            title: (script) => {
+                document.querySelector('#talking').textContent = talking
+            }
+        }
+    })()
+}
 
-//old stuff
-//moods
-/* const getMood = (name, moodType) => {
-    const path = `/assets/characters/`
-    const lowerCase = this._name
-    return `${path}${name}/${moodType}.png`
-} */
-/* const clearCharacters = () => {
-    let main = document.querySelectorAll('#character-left, #character-center, #character-right')
-    main[0].removeAttribute('src')
-    main[1].removeAttribute('src')
-    main[2].removeAttribute('src')
+//Character Creator
+const CharacterCreator = function (name, text = {
+    color: 'white',
+    size: '16',
+    weight: 'regular',
+    animation: 'typewriter'
+}, images = {
+    default: `${path}/default.png`
+}) {
+    path = () => {
+        return `/assets/characters/${name}/`
+    }
+    const name1 = name
+    const text1 = function (text) {
+
+    }
 }
-const getCharacterName = (script) => {
-    return script[getCurrentIndex()].name
-}
-const getCharacterMood = (script) => {
-    return script[getCurrentIndex()].mood[0]
-}
-const getCharacterPosition = (script) => {
-    return script[getCurrentIndex()].mood[1]
-}
-const getCharacterUrl = (script) => {
-    return `/assets/characters/${getCharacterName(script)}/${getCharacterMood(script)}.png`
-}
-const getCharacterHeight = (script) => {
-    return script[getCurrentIndex()].height
-}
-const getCharacterAnimation = (script) => {
-    return script[getCurrentIndex()].animation
-} */
+
+//Character objects Might not use these but I have the code for now
+const Tsubaki = new Character('Tsubaki', 'Akira', {
+    normal: 'normal',
+    angry: 'angry',
+    suprised: 'suprised',
+    yelling: 'yelling',
+    confusion: 'confusion'
+})
+const Ueno = new Character('Ueno', 'Kouhei', {
+    normal: 'normal',
+    angry: 'angry',
+    suprised: 'suprised',
+    yelling: 'yelling',
+    confusion: 'confusion'
+})
+

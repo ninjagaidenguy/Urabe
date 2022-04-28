@@ -6,8 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test Game</title>
+    <!-- Scripts Load here -->
+    <script src="/script/tempScript.js"></script>
     <script src="/js/script.js"></script>
+
     <link id="main-style" rel="stylesheet" href="/style/main.css">
+    <!-- Text Typer -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js"></script>
+    <!-- Animation Styles https://animate.style/-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 <body>
@@ -18,7 +25,7 @@
             <div id="main-background" class="unselectable"></div>
         </div>
         <div id="choices"></div>
-        <div id="text" class="hide" data-index="0">
+        <div id="text" class="hide" data-index="0" data-scene="gameStart">
             <span id="talking"></span>
             <span id="saying"></span>
         </div>
@@ -53,6 +60,8 @@
     <script src="/js/menu.js"></script>
     <script src="/js/audio.js"></script>
     <script src="/js/characters.js"></script>
+    <script src="/js/talking.js"></script>
+    <script src="/js/temp.js"></script>
 </body>
 
 </html>
