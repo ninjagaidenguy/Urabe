@@ -40,15 +40,18 @@ const testingLayout = {
             type: 'choices',
             choices: {
                 1: {
-                    choice: 'Rumage through his Bookbag',
+                    choice: `Rumage through his Bookbag's side pocket`,
                     jump: 5
                 },
-                2: '2',
-                3: 'Response 3'
+                2: {
+                    choice: 'Start looking through the main pocket',
+                    jump: 6
+                }
             }
         },
         5: {
-            type: 'newScene'
+            type: 'newScene',
+            scene: 'Scene1'
         }
     },
     scene1: {

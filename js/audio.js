@@ -3,7 +3,7 @@
 //Ambiance
 const ambiancePlay = (script) => {
     const audio = document.querySelector("#ambiance")
-    audio.src = `assets/ambiance/${script[getCurrentIndex()].ambiance}`
+    audio.src = `assets/ambiance/${scriptFun.ambiance(script)}`
     audio.volume = globalSettings._soundEffectVolume
     audio.play()
 }

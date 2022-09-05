@@ -1,3 +1,4 @@
+// Old Script options This can be removed eventually.
 const getScriptOptions = (() => {
     return {
         type: (script) => {
@@ -33,13 +34,7 @@ const getScriptOptions = (() => {
     }
 })()
 
-const getCurrentIndex = () => {
-    return document.querySelector('#text').getAttribute('data-index')
-}
 
-const updateCurrentIndex = (script) => {
-    document.querySelector('#text').setAttribute('data-index', script[getCurrentIndex()].jump)
-}
 
 const getSceneType = (script) => {
     return script[getCurrentIndex()].type

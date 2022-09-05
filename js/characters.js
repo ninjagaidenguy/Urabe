@@ -125,19 +125,70 @@ const CharacterCreator = function (name, text = {
     }
 }
 
-//Character objects Might not use these but I have the code for now
-const Tsubaki = new Character('Tsubaki', 'Akira', {
-    normal: 'normal',
-    angry: 'angry',
-    suprised: 'suprised',
-    yelling: 'yelling',
-    confusion: 'confusion'
-})
-const Ueno = new Character('Ueno', 'Kouhei', {
-    normal: 'normal',
-    angry: 'angry',
-    suprised: 'suprised',
-    yelling: 'yelling',
-    confusion: 'confusion'
-})
 
+
+// Rewriten Script code to clean it up.
+const scriptPos = (() => {
+    return {
+        index: () => {
+            return document.querySelector('#text').getAttribute('data-index')
+        },
+        scene: () => {
+            return document.querySelector('#text').getAttribute('data-scene')
+        }
+    }
+})()
+
+const updateIndex = (script) => {
+    document.querySelector('#text').setAttribute('data-index', script[scriptPos.scene()][scriptPos.index()]['jump'])
+}
+
+const updateScene = (script) => {
+    document.querySelector('#text').setAttribute('data-scene', script[scriptPos.scene()][scriptPos.index()]['scene'])
+}
+
+const scriptFun = (() => {
+    /**
+     * @function scriptFun
+     * @description Used for pulling the information about the current script 
+     * @param {varible} .script({})
+    */
+    return {
+        type: (script) => {
+            return script[scriptPos.scene()][scriptPos.index()]['type']
+        },
+        clear: () => { // Clear all the current images
+            let main = document.querySelectorAll('#character-left, #character-center, #character-right')
+            main[0].removeAttribute('src')
+            main[1].removeAttribute('src')
+            main[2].removeAttribute('src')
+        },
+        name: (script) => {
+            return script[scriptPos.scene()][scriptPos.index()]['name']
+        },
+        mood: (script) => {
+            return script[scriptPos.scene()][scriptPos.index()]['mood'][0]
+        },
+        position: (script) => {
+            return script[scriptPos.scene()][scriptPos.index()]['mood'][1]
+        },
+        url: (script) => {
+            return `/assets/characters/${script[scriptPos.scene()][scriptPos.index()]['name']}/${script[scriptPos.scene()][scriptPos.index()]['mood'][0]}.png`
+        },
+        height: (script) => {
+            return script[scriptPos.scene()][scriptPos.index()]['height']
+        },
+        animation: (script) => {
+            return script[scriptPos.scene()][scriptPos.index()]['animation']
+        },
+        background: (script) => {
+            return script[scriptPos.scene()][scriptPos.index()]['background']
+        },
+        ambiance: (script) => {
+            return script[scriptPos.scene()][scriptPos.index()]['ambiance']
+        },
+        music: (script) => {
+            return script[scriptPos.scene()][scriptPos.index()]['music']
+        }
+    }
+})()

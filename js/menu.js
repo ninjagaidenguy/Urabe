@@ -1,6 +1,7 @@
+// Main Menu event listeners
 // New
 document.querySelector('#text').addEventListener('click', () => {
-    goNext(tempScript)
+    goNext(globalScript)
 })
 //Save
 document.querySelector("#save").addEventListener('click', () => {
@@ -28,6 +29,8 @@ document.querySelector('#new').addEventListener('click', () => {
     hideMainMenu()
     goNext(tempScript)
 })
+
+
 // Show Main Menu
 const showMainMenu = () => {
     document.querySelector("#main-menu").classList.remove('hide')
